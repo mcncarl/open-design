@@ -11,10 +11,7 @@
 //
 // The catalog stays a pure data table:
 //   - `id` — stable React key + test selector.
-//   - `label` — English copy. Localisation can layer on later by
-//     swapping this for a Dict lookup; keeping it inline lets the
-//     rail ship without burning through 17 locale files for two
-//     new strings (see plan §B / open questions).
+//   - `labelKey` / `hintKey` — typed i18n keys used by every chip rail.
 //   - `icon` — name from the shared Icon registry.
 //   - `action` — discriminated union the HomeView dispatcher matches
 //     on. The rail component itself stays presentational.
@@ -63,9 +60,9 @@ export type ChipGroup = 'create' | 'migrate';
 export interface HomeHeroChip {
   id: string;
   labelKey: keyof Dict;
+  hintKey?: keyof Dict;
   icon: IconName;
   group: ChipGroup;
-  hint?: string;
   action: ChipAction;
 }
 
@@ -148,9 +145,9 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   {
     id: 'hyperframes',
     labelKey: 'homeHero.chip.hyperframes',
+    hintKey: 'homeHero.chip.hyperframesHint',
     icon: 'orbit',
     group: 'create',
-    hint: 'Author HTML-based motion: captions, audio-reactive visuals, scene transitions.',
     // HyperFrames is its own bundled scenario (motion-graphics
     // specialisation of Video). It surfaces in PluginsHomeSection's
     // primary category list, so the rail picks it up too rather than
@@ -177,17 +174,17 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   {
     id: 'create-plugin',
     labelKey: 'homeHero.chip.createPlugin',
+    hintKey: 'homeHero.chip.createPluginHint',
     icon: 'edit',
     group: 'migrate',
-    hint: 'Author a reusable Open Design plugin and add it to My plugins.',
     action: { kind: 'create-plugin' },
   },
   {
     id: 'figma',
     labelKey: 'homeHero.chip.figma',
+    hintKey: 'homeHero.chip.figmaHint',
     icon: 'import',
     group: 'migrate',
-    hint: 'Migrate a Figma frame into the active design system.',
     action: {
       kind: 'apply-figma-migration',
       pluginId: 'od-figma-migration',
@@ -201,17 +198,17 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   {
     id: 'folder',
     labelKey: 'homeHero.chip.folder',
+    hintKey: 'homeHero.chip.folderHint',
     icon: 'folder',
     group: 'migrate',
-    hint: 'Import an existing local folder and continue editing.',
     action: { kind: 'import-folder' },
   },
   {
     id: 'template',
     labelKey: 'homeHero.chip.template',
+    hintKey: 'homeHero.chip.templateHint',
     icon: 'file-code',
     group: 'migrate',
-    hint: 'Start from a bundled template.',
     action: { kind: 'open-template-picker' },
   },
 ];

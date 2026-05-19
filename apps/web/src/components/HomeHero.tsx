@@ -1533,7 +1533,7 @@ function TypeTabBar({
             aria-selected={isActive}
             title={homeHeroChipTitle(chip, t)}
           >
-           <span>{t(chip.labelKey)}</span>
+            <span>{t(chip.labelKey)}</span>
           </button>
         );
       })}
@@ -1584,7 +1584,7 @@ function RailGroup({
             title={homeHeroChipTitle(chip, t)}
           >
             <Icon name={chip.icon} size={14} className="home-hero__rail-chip-icon" />
-            <span className="home-hero__rail-chip-label">{homeHeroChipLabel(chip.id, t)}</span>
+            <span className="home-hero__rail-chip-label">{t(chip.labelKey)}</span>
           </button>
         );
       })}
@@ -1592,31 +1592,6 @@ function RailGroup({
   );
 }
 
-function homeHeroChipLabel(chipId: string, t: ReturnType<typeof useT>): string {
-  switch (chipId) {
-    case 'prototype': return t('homeHero.chip.prototype');
-    case 'live-artifact': return t('homeHero.chip.liveArtifact');
-    case 'deck': return t('homeHero.chip.deck');
-    case 'image': return t('homeHero.chip.image');
-    case 'video': return t('homeHero.chip.video');
-    case 'hyperframes': return t('homeHero.chip.hyperframes');
-    case 'audio': return t('homeHero.chip.audio');
-    case 'create-plugin': return t('homeHero.chip.createPlugin');
-    case 'figma': return t('homeHero.chip.figma');
-    case 'folder': return t('homeHero.chip.folder');
-    case 'template': return t('homeHero.chip.template');
-    default: return chipId;
-  }
-}
-
 function homeHeroChipTitle(chip: HomeHeroChip, t: ReturnType<typeof useT>): string {
-  switch (chip.id) {
-    case 'live-artifact': return t('homeHero.chip.liveArtifactHint');
-    case 'hyperframes': return t('homeHero.chip.hyperframesHint');
-    case 'create-plugin': return t('homeHero.chip.createPluginHint');
-    case 'figma': return t('homeHero.chip.figmaHint');
-    case 'folder': return t('homeHero.chip.folderHint');
-    case 'template': return t('homeHero.chip.templateHint');
-    default: return homeHeroChipLabel(chip.id, t);
-  }
+  return t(chip.hintKey ?? chip.labelKey);
 }

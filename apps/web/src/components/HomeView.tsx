@@ -337,7 +337,7 @@ export function HomeView({
     if (!active) return null;
     if (active.chipId) {
       const chip = findChip(active.chipId);
-      if (chip) return homeHeroChipLabelForId(chip.id, t);
+      if (chip) return t(chip.labelKey);
     }
     return active.record.title;
   }, [active, t]);
@@ -1056,23 +1056,6 @@ function projectKindForSkill(skill: SkillSummary | null): ProjectKind | null {
   if (skill.mode === 'video' || skill.surface === 'video') return 'video';
   if (skill.mode === 'audio' || skill.surface === 'audio') return 'audio';
   return 'other';
-}
-
-function homeHeroChipLabelForId(chipId: string, t: ReturnType<typeof useI18n>['t']): string {
-  switch (chipId) {
-    case 'prototype': return t('homeHero.chip.prototype');
-    case 'live-artifact': return t('homeHero.chip.liveArtifact');
-    case 'deck': return t('homeHero.chip.deck');
-    case 'image': return t('homeHero.chip.image');
-    case 'video': return t('homeHero.chip.video');
-    case 'hyperframes': return t('homeHero.chip.hyperframes');
-    case 'audio': return t('homeHero.chip.audio');
-    case 'create-plugin': return t('homeHero.chip.createPlugin');
-    case 'figma': return t('homeHero.chip.figma');
-    case 'folder': return t('homeHero.chip.folder');
-    case 'template': return t('homeHero.chip.template');
-    default: return chipId;
-  }
 }
 
 function hydratePluginInputs(
