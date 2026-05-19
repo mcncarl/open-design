@@ -1511,6 +1511,7 @@ function TypeTabBar({
   onPickChip,
 }: TypeTabBarProps) {
   const chips = useMemo(() => chipsForGroup('create'), []);
+  const t = useT();
   return (
     <div className="home-hero__type-tabs" role="tablist" aria-label="Output type">
       {chips.map((chip) => {
@@ -1530,9 +1531,9 @@ function TypeTabBar({
             onClick={() => onPickChip(chip)}
             disabled={pluginsLoading || isPending || pendingPluginId !== null}
             aria-selected={isActive}
-            title={chip.hint ?? chip.label}
+            title={chip.hint ?? t(chip.labelKey as any)}
           >
-            <span>{chip.label}</span>
+            <span>{t(chip.labelKey as any)}</span>
           </button>
         );
       })}

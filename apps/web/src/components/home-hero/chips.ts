@@ -61,7 +61,7 @@ export type ChipGroup = 'create' | 'migrate';
 
 export interface HomeHeroChip {
   id: string;
-  label: string;
+  labelKey: string;
   icon: IconName;
   group: ChipGroup;
   hint?: string;
@@ -71,7 +71,7 @@ export interface HomeHeroChip {
 export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   {
     id: 'prototype',
-    label: 'Prototype',
+    labelKey: 'homeHero.chip.prototype',
     icon: 'palette',
     group: 'create',
     // Prototype now binds to the bundled `example-web-prototype` plugin,
@@ -91,7 +91,7 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   },
   {
     id: 'deck',
-    label: 'Slide deck',
+    labelKey: 'homeHero.chip.deck',
     icon: 'present',
     group: 'create',
     // Slide deck binds to `example-simple-deck`, which ships a 353-line
@@ -112,7 +112,7 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   },
   {
     id: 'image',
-    label: 'Image',
+    labelKey: 'homeHero.chip.image',
     icon: 'image',
     group: 'create',
     action: {
@@ -129,7 +129,7 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   },
   {
     id: 'video',
-    label: 'Video',
+    labelKey: 'homeHero.chip.video',
     icon: 'play',
     group: 'create',
     action: {
@@ -146,7 +146,7 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   },
   {
     id: 'hyperframes',
-    label: 'HyperFrames',
+    labelKey: 'homeHero.chip.hyperframes',
     icon: 'orbit',
     group: 'create',
     hint: 'Author HTML-based motion: captions, audio-reactive visuals, scene transitions.',
@@ -158,7 +158,7 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   },
   {
     id: 'audio',
-    label: 'Audio',
+    labelKey: 'homeHero.chip.audio',
     icon: 'mic',
     group: 'create',
     action: {
@@ -175,7 +175,7 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   },
   {
     id: 'create-plugin',
-    label: 'Create plugin',
+    labelKey: 'homeHero.chip.create-plugin',
     icon: 'edit',
     group: 'migrate',
     hint: 'Author a reusable Open Design plugin and add it to My plugins.',
@@ -183,7 +183,7 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   },
   {
     id: 'figma',
-    label: 'From Figma',
+    labelKey: 'homeHero.chip.figma',
     icon: 'import',
     group: 'migrate',
     hint: 'Migrate a Figma frame into the active design system.',
@@ -199,7 +199,7 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   },
   {
     id: 'folder',
-    label: 'From folder',
+    labelKey: 'homeHero.chip.folder',
     icon: 'folder',
     group: 'migrate',
     hint: 'Import an existing local folder and continue editing.',
@@ -207,7 +207,7 @@ export const HOME_HERO_CHIPS: ReadonlyArray<HomeHeroChip> = [
   },
   {
     id: 'template',
-    label: 'From template',
+    labelKey: 'homeHero.chip.template',
     icon: 'file-code',
     group: 'migrate',
     hint: 'Start from a bundled template.',
